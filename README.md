@@ -16,6 +16,4 @@ Os fontes js estão em app_node/node
 
 As configurações do nginx esé em app_node/nginx
 
-É preciso criar a tabela people no MySQL com o script
-
-> CREATE TABLE people ( id int not null auto_increment, name varchar(255), primary key (id));
+O banco de dados é criado com o script app_node/init.sql na subida do docker-compose
