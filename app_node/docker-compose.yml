@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  ngix:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile.prod
+    image: ricardo/nginx:prod
+    container_name: nginx
+    networks:
+      - node-networks
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
   app:
     build: 
       context: node
@@ -10,8 +22,6 @@ services:
     tty: true
     volumes:
       - ./node/app:/usr/src/app
-    ports:
-      - "3000:3000"
     networks:
       - node-networks
     depends_on:
