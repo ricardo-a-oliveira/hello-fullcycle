@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  ngix:
+  nginx:
     build: 
       context: ./nginx
       dockerfile: Dockerfile.prod
@@ -17,6 +17,7 @@ services:
     build: 
       context: node
       dockerfile: Dockerfile
+    image: ricardo/nodeapp
     container_name: app
     entrypoint: dockerize -wait tcp://db:3306 -timeout 50s docker-entrypoint.sh node index.js
     tty: true
